@@ -18,10 +18,10 @@ Disk: 7 KB
 
 ## Installation of Python
 
-  You can install python, using that website: https://realpython.com/installing-python/<br>
-  But make sure that, at the end of the installation you click the “Add python 3.x to Path” button or add your python installation to path.<br>
+  You can install Python, using that website: https://realpython.com/installing-python/<br>
+  But make sure that, at the end of the installation you click the “Add Python 3.x to Path” button or add your Python installation to path.<br>
 
-  If you already installed python, you don’t need anything else to run the Timetable app.
+  If you already installed Python, you don’t need anything else to run the Timetable app.
 
 # Usage of the program
 
