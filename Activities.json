@@ -1,0 +1,42 @@
+{
+    "Activities": [
+        {
+            "Name": "Lecture",
+            "Type": "Work Time",
+            "Frequency": 5,
+            "Contents": [
+                {
+                    "Name": "Machine Learning",
+                    "Frequency": 5
+                },
+                {
+                    "Name": "Front-End",
+                    "Frequency": 3
+                },
+                {
+                    "Name": "Back-End",
+                    "Frequency": 4
+                },
+                {
+                    "Name": "DevOps",
+                    "Frequency": 2
+                }
+            ]
+        },
+        {
+            "Name": "Anime",
+            "Type": "Free Time",
+            "Frequency": 2,
+            "Contents": [
+                {
+                    "Name": "Kuroshitsuji",
+                    "Frequency": 4
+                },
+                {
+                    "Name": "Kyuukyoku Shinka shita Full Dive RPG ga Genjitsu yori mo Kusoge Dattara",
+                    "Frequency": 5
+                }
+            ]
+        }
+    ]
+}

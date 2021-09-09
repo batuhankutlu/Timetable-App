@@ -1,0 +1,2 @@
+py timeTable.py
+pause
