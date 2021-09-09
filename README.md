@@ -14,7 +14,7 @@ RAM: 7 MB<br>
 Disk: 7 KB
 
 # Installation
-  To install Timetable app, you need to install python 3 first.
+  To install Timetable app, you need to install Python 3 first.
 
 ## Installation of Python
 
