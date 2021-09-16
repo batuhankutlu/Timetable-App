@@ -1,0 +1,16 @@
+#:kivy 2.0.0
+
+<TimeTableUI>:
+    Button:
+        id: enterFilmBut
+        text: "Get New Activity"
+        on_press: root.hidegui(gui = self)
+        center_x: root.width / 2
+        center_y: root.height / 2 + 50
+        size: 250, 50
+    Button:
+        text: "Add New Activity"
+        on_press: root.hidegui(gui = self)
+        center_x: root.width / 2
+        center_y: (root.height / 2) - 100
+        size: 250, 50
