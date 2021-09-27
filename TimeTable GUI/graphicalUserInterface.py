@@ -12,7 +12,7 @@ from kivy.properties import (
     StringProperty,
     ObjectProperty
 )
-from timeTableV4 import getNewActivity,Content
+from .timetable import getNewActivity,Content
 from threading import Timer
 
 
