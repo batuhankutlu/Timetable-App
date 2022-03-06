@@ -221,8 +221,6 @@ def __chooseAnActivity(__activityList, __logList):
         __typeOfActivity = ""
     __newActivityList = []
     for __activity in __activityList:
-        if __activity.getName() == "Project":
-            return __activity
         if __activity.getType() != __typeOfActivity:
             __newActivityList.append(__activity)
     __activity = choice(__newActivityList)
