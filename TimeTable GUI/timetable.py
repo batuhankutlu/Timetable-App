@@ -23,7 +23,7 @@ class Content():
     def decrementPoint(self):
         if self.__point > 0:
             self.__point -= 1
-
+            
     def destroyPoint(self):
         self.__point = 0
 
@@ -42,6 +42,7 @@ class Activity():
         for __contentInObj in self.__contents:
             if __contentInObj.getName() == __content:
                 return __contentInObj
+        return Content()
 
     def getFrequency(self):
         return self.__frequency
@@ -93,12 +94,14 @@ def __takeLog(__activity, __content, __logList):
     with open("Log.json", "w") as __file:
         __logDict = {"Log": []}
         for __log in __logList:
+            __fcontent = __log.getContent().getName() if __log.getContent() is not None else "None"
             __logDict["Log"].append({"Activity": __log.getActivity(
-            ).getName(), "Content": __log.getContent().getName()})
+            ).getName(), "Content": __fcontent})
         __logDict["Log"].append(
             {"Activity": __activity.getName(), "Content": __content.getName()})
 
         dump(__logDict, __file)
+        __file.close()
 
 
 def __fillActivities():
@@ -115,8 +118,7 @@ def __fillActivities():
             __activityList.append(
                 Activity(__item["Name"], __item["Type"], __item["Frequency"], __contentsList))
     except FileNotFoundError:
-        stderr.write(
-            "I think, you forgot to write an Activities.json file.\nPlease try to write it and turn back to program")
+        stderr.write("I think, you forgot to write an Activities.json file.\nPlease try to write it and turn back to program")
         exit(-1)
 
     return __activityList
@@ -129,8 +131,10 @@ def __calculateLengthLimit(__activityList):
     return sum ** 2
 
 
-def __createLog(__activityList=[]):
+def __createLog(__activityList=None):
     # That function takes an activity list as a parameter and creates list of logs with reading a file named "Log.json" and returns list of logs.
+    if __activityList is None:
+        __activityList = []
     __fil = open("Log.json", "a")
     __fil.close()
 
@@ -144,10 +148,10 @@ def __createLog(__activityList=[]):
     if len(__data["Log"]) > __lengthLimit:
         __file = open("Log.json", "w")
         __file.close()
-        __file.open("Log.json")
+        __file = open("Log.json", "a")
         __data2 = {"Log": []}
         __data2["Log"].append(__data["Log"][::-1][0])
-        dump(__data2, __file)
+        dump(__data2,__file)
         __data = __data2
 
     __logList = []
@@ -182,24 +186,27 @@ def __createActivityAndContentListWRTPoints(__activityList):
         __activity.setContentsWRTPoints(__newContentList)
     return __newList
 
-
 def __calculatePoints(__activityList, __LogList):
     # That function takes activity list and log list and calculates points of activities and contents with looking at how far that activity or content suggested to the user.
     for __activity in __activityList:
-        for __log, __ind in zip(__LogList[::-1], range(len(__LogList[::-1]))):
+        for __log,__ind in zip(__LogList[::-1],range(len(__LogList[::-1]))):
+            if __activity.getPoint() == 0:
+                continue
             __threshold = 3 if len(__LogList[::-1]) > 3 else int(len(__LogList[::-1]) * 0.75)
+            __secondThreshold = __threshold // 2 if __threshold // 2 > 1 else 2
             if __activity.getName() == __log.getActivity().getName():
                 if __ind > __threshold:
                     __activity.incrementPoint()
-                elif __ind < int(__threshold / 2):
+                elif __ind < __secondThreshold:
                     __activity.destroyPoint()
                 else:
                     __activity.decrementPoint()
 
-                for __content, __ind2 in zip(__activity.getContentList(), range(len(__activity.getContentList()))):
-                    __threshold = 3 if len(__activity.getContentList()) > 3 else int(
-                        len(__activity.getContentList()) * 0.75)
-                    if __content.getName() == __log.getContent().getName():
+                for __content, __ind2 in zip(__activity.getContentList(),range(len(__activity.getContentList()))):
+                    if __content.getPoint() == 0:
+                        continue
+                    __threshold = 3 if len(__activity.getContentList()) > 3 else int(len(__activity.getContentList()) * 0.5)
+                    if __log.getContent() is not None and __content.getName() == __log.getContent().getName():
                         if __ind2 > __threshold:
                             __content.incrementPoint()
                         elif __ind2 < int(__threshold / 2):
@@ -207,11 +214,10 @@ def __calculatePoints(__activityList, __LogList):
                         else:
                             __content.decrementPoint()
 
-
 def __chooseAnActivity(__activityList, __logList):
     # A little random activity selecting algorithm with respect to points.
     if len(__logList) != 0:
-        __typeOfActivity = __logList[len(__logList) - 1].getActivity().getType()
+        __typeOfActivity = __logList[len(__logList)-1].getActivity().getType()
     else:
         __typeOfActivity = ""
     __newActivityList = []
@@ -226,7 +232,12 @@ def __chooseAnActivity(__activityList, __logList):
 def __chooseAContent(__activity):
     # A little random content selecting algorithm with respect to points.
     shuffle(__activity.getContentsWRTPoints())
-    return choice(__activity.getContentsWRTPoints())
+    if len(__activity.getContentsWRTPoints()) > 1:
+        return choice(__activity.getContentsWRTPoints()), True
+    elif len(__activity.getContentsWRTPoints()) == 0:
+        return Content(), False
+    else:
+        return __activity.getContentsWRTPoints()[0], True
 
 def getNewActivity():
     __activityAndLogTuple = __getActivityAndLog()
@@ -242,8 +253,14 @@ def getNewActivity():
 
     for __activity in __activityWRTPoints:
         shuffle(__activity.getContentList())
+    
+    while True:
+        # Choosing an activity and a content.
+        __chosenActivity = __chooseAnActivity(__activityWRTPoints, __LogList)
+        __chosenContent, __flag = __chooseAContent(__chosenActivity)
+        
+        if __flag:
+            break
 
-    __chosenActivity = __chooseAnActivity(__activityWRTPoints, __LogList)
-    __chosenContent = __chooseAContent(__chosenActivity)
     __takeLog(__chosenActivity, __chosenContent, __LogList)
     return __chosenActivity.getName() + "-->" + __chosenContent.getName()

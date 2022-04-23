@@ -101,6 +101,7 @@ def __takeLog(__activity, __content, __logList):
             {"Activity": __activity.getName(), "Content": __content.getName()})
 
         dump(__logDict, __file)
+        __file.close()
 
 
 def __fillActivities():
@@ -147,7 +148,7 @@ def __createLog(__activityList=None):
     if len(__data["Log"]) > __lengthLimit:
         __file = open("Log.json", "w")
         __file.close()
-        __file.open("Log.json")
+        __file = open("Log.json", "a")
         __data2 = {"Log": []}
         __data2["Log"].append(__data["Log"][::-1][0])
         dump(__data2,__file)
@@ -231,7 +232,12 @@ def __chooseAnActivity(__activityList, __logList):
 def __chooseAContent(__activity):
     # A little random content selecting algorithm with respect to points.
     shuffle(__activity.getContentsWRTPoints())
-    return choice(__activity.getContentsWRTPoints())
+    if len(__activity.getContentsWRTPoints()) > 1:
+        return choice(__activity.getContentsWRTPoints()), True
+    elif len(__activity.getContentsWRTPoints()) == 0:
+        return Content(), False
+    else:
+        return __activity.getContentsWRTPoints()[0], True
 
 
 # Taking activity and log lists.
@@ -251,9 +257,13 @@ shuffle(__activityWRTPoints)
 for __activity in __activityWRTPoints:
     shuffle(__activity.getContentList())
 
-# Choosing an activity and a content.
-__chosenActivity = __chooseAnActivity(__activityWRTPoints, __LogList)
-__chosenContent = __chooseAContent(__chosenActivity)
+while True:
+    # Choosing an activity and a content.
+    __chosenActivity = __chooseAnActivity(__activityWRTPoints, __LogList)
+    __chosenContent, __flag = __chooseAContent(__chosenActivity)
+    
+    if __flag:
+        break
 
 # Printing the chosen activity and content.
 print(__chosenActivity.getName() + "-->" + __chosenContent.getName())
