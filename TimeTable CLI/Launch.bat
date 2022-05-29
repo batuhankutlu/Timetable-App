@@ -1,2 +1,2 @@
-py timeTable.py
+py main.py
 pause

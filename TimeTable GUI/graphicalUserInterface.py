@@ -12,8 +12,14 @@ from kivy.properties import (
     StringProperty,
     ObjectProperty
 )
-from .timetable import getNewActivity,Content
-from threading import Timer
+
+
+import os, sys
+
+p = os.path.abspath('..')
+sys.path.insert(1, p)
+
+from timetable import getNewActivity, Content
 
 
 class TimeTableUI(Widget):
@@ -21,14 +27,6 @@ class TimeTableUI(Widget):
         self.mainPopUp.dismiss()
 
     def addContents(self,instance):
-        # for children in self.addActivitypopup.content.children:
-        #     if isinstance(children,BoxLayout):
-        #         if len(children.children) == 2:
-        #             boxChildren = children.children
-        #             if boxChildren[1].text == "Activity Name:":
-        #                 self.activityName = boxChildren[0].text
-        #             else:
-        #                 self.activityFrequency = boxChildren[0].text
         self.addedContents = []
         lay = GridLayout(rows = 5)
         lay.add_widget(Label(text = ""))
@@ -46,10 +44,7 @@ class TimeTableUI(Widget):
         lay.add_widget(but)
         self.addContentPopup = Popup(title = "Add Content", content = lay)
         self.addContentPopup.open()
-        
-        # print(self.activityName)
-        # print(self.activityFrequency)
-    
+
     def addCont(self,instance):
         contName = ""
         contFreq = ""
@@ -64,13 +59,8 @@ class TimeTableUI(Widget):
         self.addedContents.append(Content(contName,int(contFreq)))
         self.addContentPopup.dismiss()
         for child in self.addActivitypopup.content.children:
-            if isinstance(child,Label):
-                self.textTimer = Timer(2.0, self.refreshText, (child,True))
+            if isinstance(child,Label) and isinstance(child,Button) == False:
                 child.text = "[color=00FF00][size=15]Content added [b]successfully[/b][/size][/color]"
-                self.textTimer.start()
-
-    def refreshText(child):
-        child[0].text = ""
 
     def hidegui(self, gui=None):
         if gui.text == "Get New Activity":
@@ -100,6 +90,12 @@ class TimeTableUI(Widget):
             lay.add_widget(box)
             box = BoxLayout(orientation="horizontal")
             box.add_widget(Label(text = "Activity Frequency:"))
+            box.add_widget(TextInput(text='', multiline=False, halign = "center", input_filter = "int"))
+            lay.add_widget(box)
+            box = BoxLayout(orientation="horizontal")
+            box.add_widget(Label(text = "Activity Type:"))
+            #btn1 = ToggleButton(text='Male', group='sex',)
+            #btn2 = ToggleButton(text='Female', group='sex', state='down')
             box.add_widget(TextInput(text='', multiline=False, halign = "center", input_filter = "int"))
             lay.add_widget(box)
             box = BoxLayout(orientation="horizontal")
