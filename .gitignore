@@ -1,3 +1,8 @@
-Activities.json
-Log.json
-/TimeTable CLI/Will be added.txt
+#Activities.json
+#Log.json
+/TimeTable CLI
+/Will be added.txt
+.idea
+/__pycache__
+/TimeTable GUI\__pycache__
+*.pyc

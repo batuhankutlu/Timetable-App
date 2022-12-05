@@ -4,7 +4,7 @@ This is an activity recommendation app to use it in daily routines
 ------------------------------------------------------------------------
 For accessing the same information and some screenshots please click [here](https://github.com/batuhankutlu/Timetable-App/files/7138950/How.to.use.pdf)
 ------------------------------------------------------------------------
-First of all, thanks a lot for choosing that program to create timetables 😊
+First of all, thanks a lot for choosing this program to create timetables 😊
 
 # Minimum System Requirements
 
