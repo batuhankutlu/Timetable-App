@@ -5,3 +5,10 @@
 /__pycache__
 /TimeTable GUI\__pycache__
 *.pyc
+.vs/ProjectSettings.json
+.vs/PythonSettings.json
+.vs/slnx.sqlite
+.vs/VSWorkspaceState.json
+.vs/TimeTable-App/FileContentIndex/de67c6a7-7d11-4ae2-99a2-17dc78e7a1dc.vsidx
+.vs/TimeTable-App/FileContentIndex/read.lock
+.vs/TimeTable-App/v17/.suo

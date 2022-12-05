@@ -1,4 +1,4 @@
-from kivy.app import App
+""" from kivy.app import App
 from kivy.core import text
 from kivy.uix.widget import Widget
 from kivy.uix.popup import Popup
@@ -11,17 +11,26 @@ from kivy.properties import (
     NumericProperty,
     StringProperty,
     ObjectProperty
-)
+) """
+""" import os, sys
 
-
-import os, sys
+from PySide6 import QtWidgets
+from PyQt6 import uic
 
 p = os.path.abspath('..')
 sys.path.insert(1, p)
 
-from timetable import getNewActivity, Content
 
+class Ui(QtWidgets.QMainWindow):
+    def __init__(self):
+        super(Ui, self).__init__()
+        uic.loadUi('gui.ui', self)
+        self.show()
+    
 
+from timetable import getNewActivity, Content """
+
+""" 
 class TimeTableUI(Widget):
     def turnBack(self,instance):
         self.mainPopUp.dismiss()
@@ -115,3 +124,9 @@ class TimeTableUI(Widget):
 class TimeTableApp(App):
     def build(self):
         return TimeTableUI()
+"""
+
+
+import tkinter
+
+tkinter._test()

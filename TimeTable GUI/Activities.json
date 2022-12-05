@@ -1,0 +1,252 @@
+{
+    "Activities": [
+        {
+            "Name": "Lecture",
+            "Type": "Work Time",
+            "Frequency": 4,
+            "Contents": [
+                {
+                    "Name": "Machine Learning",
+                    "Frequency": 5
+                },
+                {
+                    "Name": "Front-End",
+                    "Frequency": 3
+                },
+                {
+                    "Name": "Back-End",
+                    "Frequency": 4
+                },
+                {
+                    "Name": "DevOps",
+                    "Frequency": 2
+                },
+                {
+                    "Name": "Minecraft Modding",
+                    "Frequency": 3
+                }
+            ]
+        },
+        {
+            "Name": "Game",
+            "Type": "Free Time",
+            "Frequency": 4,
+            "Contents": [
+                {
+                    "Name": "Super Mario 64",
+                    "Frequency": 5
+                },
+                {
+                    "Name": "The Elder Scrolls Online",
+                    "Frequency": 2
+                },
+                {
+                    "Name": "XIII",
+                    "Frequency": 3
+                },
+                {
+                    "Name": "Fallout",
+                    "Frequency": 4
+                },
+                {
+                    "Name": "Surviving Mars",
+                    "Frequency": 3
+                },
+                {
+                    "Name": "Mafia",
+                    "Frequency": 2
+                },
+                {
+                    "Name": "War Thunder",
+                    "Frequency": 3
+                },
+                {
+                    "Name": "Stellaris",
+                    "Frequency": 3
+                },
+                {
+                    "Name": "Minecraft",
+                    "Frequency": 5
+                },
+                {
+                    "Name": "GrandChase",
+                    "Frequency": 5
+                },
+                {
+                    "Name": "World of Warships",
+                    "Frequency": 4
+                },
+                {
+                    "Name": "League of Legends",
+                    "Frequency": 4
+                }
+            ]
+        },
+        {
+            "Name": "Serie",
+            "Type": "Free Time",
+            "Frequency": 2,
+            "Contents": [
+                {
+                    "Name": "Game of Thrones",
+                    "Frequency": 5
+                },
+                {
+                    "Name": "Leyla ile Mecnun",
+                    "Frequency": 3
+                },
+                {
+                    "Name": "Dark",
+                    "Frequency": 5
+                },
+                {
+                    "Name": "Black Mirror",
+                    "Frequency": 4
+                }
+            ]
+        },
+        {
+            "Name": "Film",
+            "Type": "Free Time",
+            "Frequency": 2,
+            "Contents": [
+                {
+                    "Name": "King Kong",
+                    "Frequency": 5
+                }
+            ]
+        },
+        {
+            "Name": "Anime",
+            "Type": "Free Time",
+            "Frequency": 2,
+            "Contents": [
+                {
+                    "Name": "Kuroshitsuji",
+                    "Frequency": 4
+                },
+                {
+                    "Name": "Kyuukyoku Shinka shita Full Dive RPG ga Genjitsu yori mo Kusoge Dattara",
+                    "Frequency": 5
+                }
+            ]
+        },
+        {
+            "Name": "Cartoon",
+            "Type": "Free Time",
+            "Frequency": 2,
+            "Contents": [
+                {
+                    "Name": "Avatar",
+                    "Frequency": 5
+                },
+                {
+                    "Name": "Adventure Time",
+                    "Frequency": 3
+                },
+                {
+                    "Name": "Spider-Man (1967)",
+                    "Frequency": 4
+                }
+            ]
+        },
+        {
+            "Name": "Project",
+            "Type": "Work Time",
+            "Frequency": 4,
+            "Contents": [
+                {
+                    "Name": "TimeTable",
+                    "Frequency": 4
+                },
+                {
+                    "Name": "Password Maker and Manager",
+                    "Frequency": 5
+                }
+            ]
+        },
+        {
+            "Name": "Book",
+            "Type": "Free Time",
+            "Frequency": 3,
+            "Contents": [
+                {
+                    "Name": "Wildfell Konagi Kiracisi",
+                    "Frequency": 4
+                },
+                {
+                    "Name": "Savasan Irklar Efsanesi",
+                    "Frequency": 4
+                }
+            ]
+        },
+        {
+            "Name": "Language",
+            "Type": "Work Time",
+            "Frequency": 4,
+            "Contents": [
+                {
+                    "Name": "German",
+                    "Frequency": 2
+                },
+                {
+                    "Name": "English",
+                    "Frequency": 5
+                },
+                {
+                    "Name": "Japanese",
+                    "Frequency": 3
+                }
+            ]
+        },
+        {
+            "Name": "YouTube",
+            "Type": "Free Time",
+            "Frequency": 2,
+            "Contents": [
+                {
+                    "Name": "Watch Later",
+                    "Frequency": 5
+                }
+            ]
+        },
+        {
+            "Name": "Stream",
+            "Type": "Free Time",
+            "Frequency": 2,
+            "Contents": [
+                {
+                    "Name": "berkoyundozu",
+                    "Frequency": 5
+                }
+            ]
+        },
+        {
+            "Name": "ALES",
+            "Type": "Work Time",
+            "Frequency": 5,
+            "Contents": [
+                {
+                    "Name": "Matematik",
+                    "Frequency": 5
+                },
+                {
+                    "Name": "Geometri",
+                    "Frequency": 4
+                },
+                {
+                    "Name": "Sayisal Mantik",
+                    "Frequency": 5
+                },
+                {
+                    "Name": "Turkce",
+                    "Frequency": 4
+                },
+                {
+                    "Name": "Mantiksal Akil Yurutme",
+                    "Frequency": 5
+                }
+            ]
+        }
+    ]
+}
